@@ -8,6 +8,4 @@ class Utilisateur {
   }
 }
 
-module.exports = {
-  Utilisateur,
-};
+module.exports = Utilisateur;

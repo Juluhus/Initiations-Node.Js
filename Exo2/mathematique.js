@@ -8,4 +8,4 @@ function multiplier(a, b) {
 
 const PI = 3.14;
 
-module.exports = [additionner, multiplier, PI];
+module.exports = {additionner, multiplier, PI};
