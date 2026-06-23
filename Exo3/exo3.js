@@ -1,5 +1,5 @@
-"use strict";
 // import { writeFileSync } from 'node:fs';
+export {};
 // import nodeFs = require("node:fs");
 // try {
 //     writeFileSync('donnees/journal.txt', "A smile doesn’t cost anything, but it can change everything—your mood, someone else’s day, and even the tone of an entire interaction. The more it is shared, the more it spreads, without ever being used up.", 'utf-8');
@@ -60,24 +60,73 @@
 // }
 // appendText("Un texte ajouter avec l'asynchronisme hihihi");
 // Etape2
-const fs = require('fs/promises');
-const path = require('path');
-async function listerFichier(dossier) {
-    try {
-        const elements = await fs.readdir(dossier);
-        const fichiers = [];
-        for (const element of elements) {
-            const cheminComplet = path.join(dossier, element);
-            const stats = await fs.stat(cheminComplet);
-            if (stats.isFile()) {
-                fichiers.push(element);
-                console.log(`Nom: ${element} | Taille: ${stats.size} octets`);
-            }
-        }
-        return fichiers;
-    }
-    catch (err) {
-        console.error("Erreur :", err);
-        return [];
-    }
-}
+// import { promises as fs } from "fs";
+// import path from "path";
+// async function listerFichiers(dossier: string): Promise<string[]> {
+//     try {
+//         const elements = await fs.readdir(dossier);
+//         const fichiers: string[] = [];
+//         for (const element of elements) {
+//             const cheminComplet = path.join(dossier, element);
+//             const stats = await fs.stat(cheminComplet);
+//             if (stats.isFile()) {
+//                 fichiers.push(element);
+//                 console.log(`Nom: ${element} | Taille: ${stats.size} octets`);
+//             }
+//         }
+//         return fichiers;
+//     } catch (err) {
+//         console.error("Erreur :", err);
+//         return [];
+//     }
+// }
+// listerFichiers('donnees');
+// fs.readdir est utilise pour lister le contenu d'un dossier et retourne un tableau de la 
+// fs.promises.stat sert à obtenir les infos d’un fichier ou dossier
+//Etape 3
+// const fs = require('fs/promises');
+// const path = require('path');
+// async function copierFichier(source: string, destination: string): Promise<void> {
+//     try {
+//         const contenu = await fs.readFile(source, 'utf8');
+//         const dossierDest = path.dirname(destination);
+//         try {
+//             await fs.access(dossierDest);
+//         } catch {
+//             throw new Error("Le répertoire de destination n'existe pas");
+//         }
+//         await fs.writeFile(destination, contenu);
+//         console.log("Fichier copié avec succès !");
+//     } catch (err: any) {
+//         if (err.code === 'ENOENT') {
+//             console.error("Erreur : fichier source introuvable");
+//         } else {
+//             console.error("Erreur :", err.message);
+//         }
+//     }
+// }
+//Etape 4
+// const fs = require('fs').promises;
+// async function rechercherDansFichier(
+//     chemin: string,
+//     motif: string
+// ): Promise<{ ligne: number; contenu: string }[]> {
+//     try {
+//         const contenu = await fs.readFile(chemin, 'utf8');
+//         const lignes = contenu.split('\n');
+//         const resultats: { ligne: number; contenu: string }[] = [];
+//         lignes.forEach((ligne, index) => {'
+//             if (ligne.includes(motif)) {
+//                 resultats.push({
+//                     ligne: index + 1,
+//                     contenu: ligne
+//                 });
+//             }
+//         });
+//         return resultats;
+//     } catch (err) {
+//         console.error("Erreur :", err);
+//         return [];
+//     }
+// }
+//# sourceMappingURL=exo3.js.map
